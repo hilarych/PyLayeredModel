@@ -154,7 +154,7 @@ def plot_dispersion(T, c = None, u = None, show = True, out_file = None, x_label
         
     return ax
 
-def plot_eigenfuncs(model, u_list, labels, title = None, path_out = None, norm = None, z_lines = None, show = True):
+def plot_eigenfuncs(model, u_list, labels, title = None, path_out = None, norm = None, z_lines = None, show = True, ax=None):
     '''
     Plot the eigenfunctions calculated by the sregn96/slegn96 functions in CPS.
 
@@ -170,9 +170,9 @@ def plot_eigenfuncs(model, u_list, labels, title = None, path_out = None, norm =
 
     '''
 
-
-    fig = plt.figure()
-    ax  = plt.gca()
+    if ax is None:
+        fig = plt.figure()
+        ax  = plt.gca()
     
     if norm == 'max':
 
@@ -214,6 +214,7 @@ def plot_eigenfuncs(model, u_list, labels, title = None, path_out = None, norm =
     if show:
 
         plt.show()
+    return ax
 
 def plot_kernels_sxegn96(model, k_list, labels, title = None, path_out = None, z_lines = None, ax = None, x_label = 'Sensitivity per km', x_lims = None, legend_pos = 'best', show = True):
     '''
@@ -267,6 +268,7 @@ def plot_kernels_sxegn96(model, k_list, labels, title = None, path_out = None, z
 
         plt.show()
 
+    return ax
 def plot_kernels_srfker96(layered_model, periods, sensitivity = None, ax = None, show = True, dv = 'c', iv = 'b', smoothing = False, fill_between = False, colours = None):
     '''
     Plot the sensitivity kernels calculated by the CPS function srfker96.
