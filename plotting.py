@@ -154,7 +154,7 @@ def plot_dispersion(T, c = None, u = None, show = True, out_file = None, x_label
         
     return ax
 
-def plot_eigenfuncs(model, u_list, labels, title = None, path_out = None, norm = None, z_lines = None, show = True, ax=None):
+def plot_eigenfuncs(model, u_list, labels, title = None, path_out = None, norm = None, z_lines = None, colors=None, show = True, ax=None):
     '''
     Plot the eigenfunctions calculated by the sregn96/slegn96 functions in CPS.
 
@@ -181,9 +181,9 @@ def plot_eigenfuncs(model, u_list, labels, title = None, path_out = None, norm =
 
         u_list = [u/u_max for u in u_list]
 
-    for u, label in zip(u_list, labels):
+    for i, (u, label) in enumerate(zip(u_list, labels)):
 
-        ax.plot(u, model.cum_h, label = label)
+        ax.plot(u, model.cum_h, label = label, color=colors[i])
 
     if norm == 'max':
         ax.set_xlim([-1.05, 1.05])
