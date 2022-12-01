@@ -236,7 +236,7 @@ def plot_kernels_sxegn96(model, k_list, labels, title = None, path_out = None, z
         fig = plt.figure()
         ax  = plt.gca()
     
-    for k, label in zip(k_list, labels):
+    for i, (k, label) in enumerate(zip(k_list, labels)):
         if colors!=None:
             ax.plot(k, model.cum_h, label = label,color=colors[i])
         else:
