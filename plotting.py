@@ -182,8 +182,10 @@ def plot_eigenfuncs(model, u_list, labels, title = None, path_out = None, norm =
         u_list = [u/u_max for u in u_list]
 
     for i, (u, label) in enumerate(zip(u_list, labels)):
-
-        ax.plot(u, model.cum_h, label = label, color=colors[i])
+        if colors!= None:
+            ax.plot(u, model.cum_h, label = label, color=colors[i])
+        else:
+            ax.plot(u, model.cum_h, label = label)
 
     if norm == 'max':
         ax.set_xlim([-1.05, 1.05])
@@ -216,7 +218,7 @@ def plot_eigenfuncs(model, u_list, labels, title = None, path_out = None, norm =
         plt.show()
     return ax
 
-def plot_kernels_sxegn96(model, k_list, labels, title = None, path_out = None, z_lines = None, ax = None, x_label = 'Sensitivity per km', x_lims = None, legend_pos = 'best', show = True):
+def plot_kernels_sxegn96(model, k_list, labels, title = None, path_out = None, z_lines = None, ax = None, x_label = 'Sensitivity per km', x_lims = None, legend_pos = 'best', colors=None, show = True):
     '''
     Plot the kernels calculated by the sregn96/slegn96 functions in CPS.
 
@@ -235,9 +237,10 @@ def plot_kernels_sxegn96(model, k_list, labels, title = None, path_out = None, z
         ax  = plt.gca()
     
     for k, label in zip(k_list, labels):
-
-        ax.plot(k, model.cum_h, label = label)
-
+        if colors!=None:
+            ax.plot(k, model.cum_h, label = label,color=colors[i])
+        else:
+            ax.plot(k, model.cum_h, label = label)
     if x_lims is not None:
 
         ax.set_xlim(x_lims)
