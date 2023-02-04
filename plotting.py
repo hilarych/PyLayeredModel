@@ -13,7 +13,7 @@ import  numpy as np
 # title     If not None, the title string.
 # path_out  If not None, the image will be saved to the specified path.
 
-def plot_model(model, ax = None, show = True, params = ['vs']):
+def plot_model(model, ax = None, show = True, params = ['vs'], legend = True):
     '''
     Plot a LayeredModel.
 
@@ -79,7 +79,8 @@ def plot_model(model, ax = None, show = True, params = ['vs']):
     ax.invert_yaxis()
     ax.grid()
     #ax.set_xlabel(x_label,  fontsize = 14)
-    ax.legend()
+    if legend:
+        ax.legend()
     ax.set_ylabel('Depth / km',                 fontsize = 14)
     
     # Show the plot.
